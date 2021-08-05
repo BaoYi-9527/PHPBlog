@@ -14,7 +14,7 @@ Route::any('get/files','CommonController@getFiles')->name('common.getFiles');
 
 
 # worry's excel table
-Route::get('worry','WorryController@index')->name('worry.excel');
+Route::get('worry/excel','WorryController@index')->name('worry.excel');
 Route::post('worry/handleExcel','WorryController@handleExcel')->name('worry.handleExcel');
 
 
