@@ -79,6 +79,7 @@
     <script type="text/javascript">
         // 文件上传
         layui.use('upload', function () {
+            let index = layer.load(2)
             let upload = layui.upload
             // 执行上传实例
             upload.render({
@@ -91,7 +92,10 @@
                     location.reload()
                 }
             })
+
+            layer.close(index)
         })
+
         // 目录清空
         $('#delete-files-button').click(function () {
             $.post('/clear/files', {path: 'worry/excel'}, function (response) {
@@ -106,8 +110,14 @@
 
         // 处理excel表格
         $('#handle-excel-button').click(function () {
+            let index = layer.load(2)
             $.post('/worry/handleExcel', function (response) {
-                console.log(response)
+                layer.close(index)
+                if(response.code === 200) {
+                   window.location.href = response.data.path
+                } else {
+                    layer.msg(response.message,{icon: 6})
+                }
             })
         })
     </script>
