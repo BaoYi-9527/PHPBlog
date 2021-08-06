@@ -31,6 +31,20 @@
             color: white;
             line-height: 28px;
         }
+        .layui-form-item label {
+            width: 100px;
+        }
+        .layui-form-item input {
+            border-radius: 5px;
+        }
+        #config-form-button {
+            float: right;
+            border: 1px;
+            border-radius: 3px;
+            color: white;
+            top: 15px;
+            position: relative;
+        }
     </style>
 @endsection
 
@@ -40,7 +54,7 @@
             <div class="layui-col-xs2 layui-col-sm2 layui-col-md2">&nbsp;</div>
             <div class="layui-col-xs8 layui-col-sm8 layui-col-md8" id="middle-container">
                 <div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
-                    <h1 class="container-title">Worry’s Excel Tools</h1>
+{{--                    <h1 class="container-title">Worry’s Excel Tools</h1>--}}
                     <div id="excel-handle-div">
                         <button type="button" class="layui-btn layui-btn-warm" id="upload-config-button">
                             <i class="layui-icon">&#xe716;</i>上传配置文件
@@ -100,7 +114,37 @@
 @endsection
 
 @section('hidden-content')
-
+    <div id="config-form-div" hidden>
+        <form action="" class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="sheet-count">工作表数：</label>
+                <div class="layui-input-inline">
+                    <input id="sheet-count" type="text" name="sheet_count" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="city-column">城市所属列：</label>
+                <div class="layui-input-inline">
+                    <input id="city-column" type="text" name="city_column" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="activity-column">活动所属列：</label>
+                <div class="layui-input-inline">
+                    <input id="activity-column" type="text" name="activity_column" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="batch-id-column">批次ID所属列：</label>
+                <div class="layui-input-inline">
+                    <input id="batch-id-column" type="text" name="batch_id_column" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+               <button type="button" id="config-form-button" class="layui-btn-sm layui-btn-normal">上传文件</button>
+            </div>
+        </form>
+    </div>
 @endsection
 
 @section('app-js')
@@ -121,31 +165,54 @@
                 }
             })
 
-            // 配置excel上传
-            upload.render({
-                elem: '#upload-config-button',
-                url: '/upload/file',
-                exts: 'xlsx',
-                data: {path: 'worry/config', suffix: '.xlsx'},
-                multiple: true,
-                done: function (response) {
-                    let loadIndex = layer.load(2)
-                    if(response.code === 200) {
-                        $.post('/tools/worry/loadConfig',function (res) {
-                            layer.close(loadIndex)
-                           if(res.code === 200) {
-                               layer.msg('配置缓存成功，12小时后过期!',{icon: 6, time: 2000}, function () {
-                                   location.reload()
-                               })
-                           } else {
-                               layer.msg(res.message, {icon: 6, time: 2000})
-                           }
-                        })
-                    } else {
-                        layer.msg(response.message,{icon: 6})
-                    }
+            $('#upload-config-button').click(function () {
+                let html = $('#config-form-div').html()
+                layer.open({
+                    title: 'excel参数',
+                    area: ['400px'],
+                    content: html,
+                    btn: false,
+                    success: function (index) {
+                        upload.render({
+                            elem: '.layui-layer-content #config-form-button',
+                            url: '/upload/file',
+                            exts: 'xlsx',
+                            data: {
+                                path: 'worry/config',
+                                suffix: '.xlsx',
+                            },
+                            multiple: true,
+                            done: function (response) {
+                                let loadIndex = layer.load(2)
+                                if(response.code === 200) {
+                                    let selector = $('.layui-layer-content')
+                                    let sheetCount =  selector.find('input[name=sheet_count]').val()
+                                    let cityColumn =  selector.find('input[name=city_column]').val()
+                                    let activityColumn =  selector.find('input[name=activity_column]').val()
+                                    let batchIdColumn =  selector.find('input[name=batch_id_column]').val()
+                                    $.post('/tools/worry/loadConfig',{
+                                        sheetCount: sheetCount,
+                                        cityColumn: cityColumn,
+                                        activityColumn: activityColumn,
+                                        batchIdColumn: batchIdColumn
+                                    },function (res) {
+                                        layer.close(loadIndex)
+                                        if(res.code === 200) {
+                                            layer.msg('配置缓存成功，12小时后过期!',{icon: 6, time: 2000}, function () {
+                                                location.reload()
+                                            })
+                                        } else {
+                                            layer.msg(res.message, {icon: 6, time: 2000})
+                                        }
+                                    })
+                                } else {
+                                    layer.msg(response.message,{icon: 6})
+                                }
 
-                }
+                            }
+                        })
+                    }
+                })
             })
             layer.close(index)
         })

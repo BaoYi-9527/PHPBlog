@@ -123,20 +123,25 @@ class WorryController extends BaseController
      */
     public function loadConfig(Request $request)
     {
+        $sheetCount      = $request->input('sheetCount',12) - 1;
+        $cityCol         = $request->input('cityColumn',2) - 1;
+        $activityNameCol = $request->input('activityColumn',6) - 1;
+        $batchIdCol      = $request->input('batchIdColumn',30) -1;
+
         $dirPath = 'worry/config';
         $files   = Storage::allFiles($dirPath);
         $configs = [];
         foreach ($files as $file) {
             $array = Excel::toArray(new ConfigImport(), $file);
             foreach ($array as $sheet => $item) {
-                if ($sheet > 11) break;
+                if ($sheet > $sheetCount) break;
                 unset($item[0]);    # 去除第一行
                 unset($item[1]);    # 去除表头
                 foreach ($item as $row) {
-                    $city = $row[1];
-                    if (!empty($row[5])) $activityName = $row[5];
-                    if (empty(last($row)) or (last($row) == '/')) continue; # 若批次码为空 则跳过
-                    $configs[$city][last($row)] = empty($row[5]) ? $activityName : $row[5];
+                    $city = empty($row[$cityCol]) ? ($city ?? '') : $row[$cityCol];
+                    if (!empty($row[$activityNameCol])) $activityName = $row[$activityNameCol];
+                    if (empty($row[$batchIdCol]) or ($row[$batchIdCol] == '/')) continue; # 若批次码为空 则跳过
+                    $configs[$city][$row[$batchIdCol]] = empty($row[$activityNameCol]) ? ($activityName ?? '') : $row[$activityNameCol];
                 }
             }
         }
