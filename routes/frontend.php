@@ -15,7 +15,10 @@ Route::any('get/files','CommonController@getFiles')->name('common.getFiles');
 
 # worry's excel table
 Route::get('tools/worry/excel','WorryController@index')->name('worry.excel');
+# 处理Excel
 Route::post('tools/worry/handleExcel','WorryController@handleExcel')->name('worry.handleExcel');
+# 加载配置文件
+Route::post('tools/worry/loadConfig','WorryController@loadConfig')->name('worry.loadConfig');
 
 
 

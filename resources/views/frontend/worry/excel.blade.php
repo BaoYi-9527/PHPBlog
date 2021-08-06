@@ -72,6 +72,9 @@
                                     <tr>
                                         <th>序号</th>
                                         <th>文件名</th>
+                                        @if(request('type',1) == 3)
+                                        <th>下载地址</th>
+                                        @endif
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -79,6 +82,9 @@
                                         <tr>
                                             <td>{{$key + 1}}</td>
                                             <td>{{$file}}</td>
+                                            @if(request('type',1) == 3)
+                                               <td><a href="{{asset($file)}}">下载</a></td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -123,7 +129,22 @@
                 data: {path: 'worry/config', suffix: '.xlsx'},
                 multiple: true,
                 done: function (response) {
-                    location.reload()
+                    let loadIndex = layer.load(2)
+                    if(response.code === 200) {
+                        $.post('/tools/worry/loadConfig',function (res) {
+                            layer.close(loadIndex)
+                           if(res.code === 200) {
+                               layer.msg('配置缓存成功，12小时后过期!',{icon: 6, time: 2000}, function () {
+                                   location.reload()
+                               })
+                           } else {
+                               layer.msg(res.message, {icon: 6, time: 2000})
+                           }
+                        })
+                    } else {
+                        layer.msg(response.message,{icon: 6})
+                    }
+
                 }
             })
             layer.close(index)
@@ -136,10 +157,10 @@
             let path = pathObj[type]
             $.post('/clear/files', {path: path}, function (response) {
                 if(response.code === 200) {
-                    layer.msg('操作成功!',{icon: 5})
+                    layer.msg('操作成功!',{icon: 6})
                     location.reload()
                 } else {
-                    layer.msg(response.message,{icon: 6})
+                    layer.msg(response.message,{icon: 5})
                 }
             })
         })
@@ -150,9 +171,9 @@
             $.post('/tools/worry/handleExcel', function (response) {
                 layer.close(index)
                 if(response.code === 200) {
-                   window.location.href = response.data.path
+                    layer.msg('请点击"生成文件"标签下载处理好的文件',{icon: 6})
                 } else {
-                    layer.msg(response.message,{icon: 6})
+                    layer.msg(response.message,{icon: 5})
                 }
             })
         })
