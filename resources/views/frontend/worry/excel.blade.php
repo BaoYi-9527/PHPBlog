@@ -54,7 +54,7 @@
             <div class="layui-col-xs2 layui-col-sm2 layui-col-md2">&nbsp;</div>
             <div class="layui-col-xs8 layui-col-sm8 layui-col-md8" id="middle-container">
                 <div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
-{{--                    <h1 class="container-title">Worry’s Excel Tools</h1>--}}
+                    <h1 class="container-title">Worry’s Excel Tools</h1>
                     <div id="excel-handle-div">
                         <button type="button" class="layui-btn layui-btn-warm" id="upload-config-button">
                             <i class="layui-icon">&#xe716;</i>上传配置文件
