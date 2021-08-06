@@ -25,6 +25,12 @@
         #files-list-div {
             padding: 0 10px 0 10px;
         }
+        #delete-files-button {
+            float: right;
+            border: 1px solid #FF5722;;
+            color: white;
+            line-height: 28px;
+        }
     </style>
 @endsection
 
@@ -36,33 +42,49 @@
                 <div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
                     <h1 class="container-title">Worry’s Excel Tools</h1>
                     <div id="excel-handle-div">
+                        <button type="button" class="layui-btn layui-btn-warm" id="upload-config-button">
+                            <i class="layui-icon">&#xe716;</i>上传配置文件
+                        </button>
                         <button type="button" class="layui-btn" id="upload-file-button">
                             <i class="layui-icon">&#xe67c;</i>上传文件
                         </button>
-                        <button type="button" class="layui-btn layui-btn-danger" id="delete-files-button">
-                            <i class="layui-icon">&#xe640;</i>删除全部文件
-                        </button>
+{{--                        <button type="button" class="layui-btn layui-btn-danger" id="delete-files-button">--}}
+{{--                            <i class="layui-icon">&#xe640;</i>删除全部文件--}}
+{{--                        </button>--}}
                         <button type="button" class="layui-btn layui-btn-normal" id="handle-excel-button">
                             <i class="layui-icon">&#xe609;</i>处理生成Excel
                         </button>
                     </div>
+                    <hr>
                     <div id="files-list-div">
-                        <table class="layui-table">
-                            <thead>
-                                <tr>
-                                    <th>序号</th>
-                                    <th>文件名</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($files as $key => $file)
+                        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                            <ul class="layui-tab-title">
+                                <li @if(request('type',1) == 1) class="layui-this" @endif type="1">配置文件</li>
+                                <li @if(request('type',1) == 2) class="layui-this" @endif type="2">数据文件</li>
+                                <li @if(request('type',1) == 3) class="layui-this" @endif type="3">生成文件</li>
+                                <button type="button" class="layui-btn-sm layui-btn-danger" id="delete-files-button">
+                                    <i class="layui-icon">&#xe640;</i>删除全部文件
+                                </button>
+                            </ul>
+                            <div class="layui-tab-content">
+                                <table class="layui-table">
+                                    <thead>
                                     <tr>
-                                        <td>{{$key + 1}}</td>
-                                        <td>{{$file}}</td>
+                                        <th>序号</th>
+                                        <th>文件名</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($files as $key => $file)
+                                        <tr>
+                                            <td>{{$key + 1}}</td>
+                                            <td>{{$file}}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,7 +103,7 @@
         layui.use('upload', function () {
             let index = layer.load(2)
             let upload = layui.upload
-            // 执行上传实例
+            // 数据excel上传
             upload.render({
                 elem: '#upload-file-button',
                 url: '/upload/file',
@@ -93,12 +115,26 @@
                 }
             })
 
+            // 配置excel上传
+            upload.render({
+                elem: '#upload-config-button',
+                url: '/upload/file',
+                exts: 'xlsx',
+                data: {path: 'worry/config', suffix: '.xlsx'},
+                multiple: true,
+                done: function (response) {
+                    location.reload()
+                }
+            })
             layer.close(index)
         })
 
         // 目录清空
         $('#delete-files-button').click(function () {
-            $.post('/clear/files', {path: 'worry/excel'}, function (response) {
+            let pathObj = {1: 'worry/config', 2: 'worry/excel', 3: 'worry/export'}
+            let type = Number($(this).siblings('.layui-this').attr('type'))
+            let path = pathObj[type]
+            $.post('/clear/files', {path: path}, function (response) {
                 if(response.code === 200) {
                     layer.msg('操作成功!',{icon: 5})
                     location.reload()
@@ -119,6 +155,15 @@
                     layer.msg(response.message,{icon: 6})
                 }
             })
+        })
+
+        // 标签切换数据
+        $('.layui-tab-title li').click(function () {
+            let type = $(this).attr('type')
+            let isThis = $(this).hasClass('layui-this')
+            if(!isThis) {
+                window.location.href = location.origin + location.pathname + '?type=' + type
+            }
         })
     </script>
 @endsection

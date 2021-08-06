@@ -25,9 +25,15 @@ class WorryController extends BaseController
      */
     public function index(Request $request)
     {
-        $files = Storage::files('worry/excel');
+        $type    = $request->input('type', 1);
+        $pathArr = [
+            1 => 'worry/config',
+            2 => 'worry/excel',
+            3 => 'worry/export'
+        ];
+        $files   = Storage::files($pathArr[(int)$type]);
         return view('frontend.worry.excel')
-            ->with('files',$files);
+            ->with('files', $files);
     }
 
     /**
