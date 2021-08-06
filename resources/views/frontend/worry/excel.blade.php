@@ -239,6 +239,7 @@
                 layer.close(index)
                 if(response.code === 200) {
                     layer.msg('请点击"生成文件"标签下载处理好的文件',{icon: 6})
+                    location.reload()
                 } else {
                     layer.msg(response.message,{icon: 5})
                 }
