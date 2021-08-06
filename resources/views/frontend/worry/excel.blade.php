@@ -111,7 +111,7 @@
         // 处理excel表格
         $('#handle-excel-button').click(function () {
             let index = layer.load(2)
-            $.post('/worry/handleExcel', function (response) {
+            $.post('handleExcel', function (response) {
                 layer.close(index)
                 if(response.code === 200) {
                    window.location.href = response.data.path
