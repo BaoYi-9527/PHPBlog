@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Frontend\Tools;
 
 
 use App\Constant\CacheKey;
