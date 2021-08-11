@@ -101,6 +101,7 @@
         @media only screen and (max-width: 500px) {
             #certificate-div {
                 background-image: url("{{asset('resources/imgs/certificate_lace.png')}}");
+                background-position: center;
                 background-size: 120vw 70vh;
                 margin-left: 0;
                 background-repeat: no-repeat;
@@ -109,8 +110,8 @@
             }
             #certificate-content {
                 position: relative;
-                top: 16vh;
-                left: 30vw;
+                top: 32vh;
+                left: 22vw;
                 width: 57vw;
                 height: 28vh;
             }
@@ -139,7 +140,7 @@
                 border: 1px solid #C9C9C9;
                 padding: 1px;
                 position: relative;
-                bottom: 14em;
+                bottom: 13em;
                 left: 10em;
             }
             #personal-info-img img {
