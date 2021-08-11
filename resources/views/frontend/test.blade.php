@@ -119,22 +119,6 @@
                 font-size: 0.5rem;
 
             }
-            /*#personal-info-div {*/
-            /*    position: relative;*/
-            /*    font-size: 0.625em;*/
-            /*    font-weight: bold;*/
-            /*    transform: scale(0.6);*/
-            /*    left: -45px;*/
-            /*    top: -50px;*/
-            /*}*/
-            /*#personal-info-img img{*/
-            /*    width: 40px;*/
-            /*    height: 50px;*/
-            /*    transform: scale(0.6);*/
-            /*}*/
-            /*#personal-info-div,#personal-info-img {*/
-            /*    float: left;*/
-            /*}*/
             #personal-info-div,#personal-info-img {
                 float: left;
                 margin-top: 20px;
@@ -144,12 +128,15 @@
                 font-size: 0.625em;
                 font-weight: bold;
                 transform: scale(0.6);
-                left: -45px;
+                left: -40px;
                 top: -50px;
             }
             #personal-info-img {
                 border: 1px solid #C9C9C9;
                 padding: 1px;
+                position: relative;
+                bottom: 200px;
+                left: 150px;
             }
             #personal-info-img img {
                 width: 50px;
@@ -162,24 +149,33 @@
                 display: inline-block;
             }
             #certificate-desc-div p {
-                font-size: 18px;
+                font-size: 14px;
                 margin-top: 10px;
                 text-align: justify;
-                line-height: 28px;
+                line-height: 20px;
+                transform: scale(0.6);
+                position: relative;
+                bottom: 175px;
+                left: -68px;
+                width: 350px;
             }
             #wechat-code-div,#chapter-div {
                 float: left;
             }
             #wechat-code-div {
-                margin-top: 20px;
-                margin-left: 25px;
-                width: 100px;
+                margin-top: 10px;
+                position: relative;
                 padding: 10px;
+                bottom: 205px;
+                left: -20px;
+                transform: scale(0.6);
+                width: 82px;
+                margin-left: 10px;
             }
             #wechat-code-div img {
                 margin-left: 10px;
-                height: 80px;
-                width: 80px;
+                height: 60px;
+                width: 60px;
             }
             #wechat-code-div div {
                 margin-top: 5px;
@@ -187,8 +183,12 @@
             }
             #chapter-div {
                 padding: 10px;
-                margin-left: 45px;
+                margin-left: 0;
                 margin-top: 20px;
+                position: relative;
+                bottom: 340px;
+                transform: scale(0.5);
+                left: 40px;
             }
             #chapter-div div {
                 font-size: 14px;
@@ -196,11 +196,11 @@
                 margin-bottom: 5px;
             }
             #chapter-img {
-                width: 100px;
-                height: 100px;
+                width: 50px;
+                height: 50px;
                 position: relative;
-                left: 95px;
-                bottom: 129px;
+                left: 10px;
+                bottom: 185px;
             }
         }
 
@@ -226,10 +226,10 @@
                 <img src="{{asset('resources/imgs/head_test.jpg')}}" alt="">
             </div>
             <div id="certificate-desc-div">
-                <p>&nbsp;&nbsp;本电子证书由安徽省机建职业服务中心核发，本证书表明持证人已通过相关技能的培训和考核，成绩合格。</p>
+                <p>&nbsp;&nbsp;本证书表明持证人已通过相关技能的培训和考核，成绩合格。</p>
             </div>
             <div id="wechat-code-div">
-                <img src="{{asset('resources/imgs/code_test.png')}}" alt="" style="height: 80px;width: 80px">
+                <img src="{{asset('resources/imgs/code_test.png')}}" alt="">
                 <div>欢迎关注</div>
             </div>
             <div id="chapter-div">
