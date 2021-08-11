@@ -97,19 +97,18 @@
         @media only screen and (max-width: 500px) {
             #certificate-div {
                 background-image: url("{{asset('resources/imgs/certificate_lace.png')}}");
-                background-size: 120% 50%;
-                margin-left: -10%;
+                background-size: 60vh 60vh;
+                margin-left: -14vw;
                 background-repeat: no-repeat;
                 height: calc(100vh);
                 width: calc(100vw);
             }
             #certificate-content {
                 position: relative;
-                top: 12%;
-                left: 31%;
-                width: 58%;
-                height: 28%;
-                /*background-color: #ccc;*/
+                top: 15vh;
+                left: 37vw;
+                width: 57vw;
+                height: 28vh;
             }
             #certificate-content p {
                 position: relative;
