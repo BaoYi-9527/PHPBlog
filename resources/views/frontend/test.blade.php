@@ -235,6 +235,131 @@
             }
         }
         /*移动端样式*/
+        @media (max-width: 500px) and (max-height: 900px) {
+            #certificate-div {
+                background-image: url("{{asset('resources/imgs/certificate_lace.png')}}");
+                background-position: center;
+                background-size: 120vw 70vh;
+                margin-left: 0;
+                background-repeat: no-repeat;
+                height: calc(100vh);
+                width: calc(100vw);
+            }
+
+            #certificate-content {
+                position: relative;
+                top: 32vh;
+                left: 22vw;
+                width: 57vw;
+                height: 40vh;
+            }
+
+            #certificate-content>p {
+                position: relative;
+                text-align: center;
+                font-weight: bold;
+                padding-bottom: 0.3em;
+                font-size: 0.5rem;
+
+            }
+
+            #personal-info-div, #personal-info-img {
+                float: left;
+                margin-top: 2.5em;
+            }
+
+            #personal-info-div {
+                position: absolute;
+                font-size: 0.625em;
+                font-weight: bold;
+                transform: scale(0.6);
+                left: -22%;
+                top: 10%;
+                line-height: 1.8em;
+            }
+
+            #personal-info-img {
+                border: 1px solid #C9C9C9;
+                padding: 1px;
+                position: absolute;
+                bottom: 60%;
+                left: 70%;
+            }
+
+            #personal-info-img img {
+                width: 4em;
+                height: 5em;
+            }
+
+            #personal-info-div div {
+                padding-bottom: 0.2em;
+            }
+
+            #certificate-desc-div {
+                font-size: 0.8em;
+                margin-top: -2.4em;
+                text-align: justify;
+                line-height: 10px;
+                transform: scale(0.6);
+                position: absolute;
+                bottom: 40%;
+                left: -25%;
+                width: 135%;
+                padding: 0.8em;
+            }
+
+            #wechat-code-div, #chapter-div {
+                float: left;
+            }
+
+            #wechat-code-div {
+                margin-top: 0.8em;
+                position: absolute;
+                padding: 0.8em;
+                bottom: 10%;
+                left: -8%;
+                transform: scale(0.6);
+                width: 5em;
+                margin-left: 0.8em;
+            }
+
+            #wechat-code-div img {
+                margin-left: 0.8em;
+                height: 4.5em;
+                width: 4.5em;
+            }
+
+            #wechat-code-div div {
+                margin-top: 0.2em;
+                text-align: center;
+            }
+
+            #chapter-div {
+                position: absolute;
+                padding: 0.8em;
+                margin-left: 0;
+                margin-top: 0.2em;
+                bottom: 5%;
+                transform: scale(0.5);
+                left: 23%;
+                width: 80%;
+            }
+
+            #chapter-div div {
+                font-size: 0.8em;
+                font-weight: bold;
+                margin-bottom: 0.2em;
+            }
+
+            #chapter-img {
+                width: 2.5em;
+                height: 2.5em;
+                position: absolute;
+                left: 60%;
+                bottom: 25%;
+            }
+        }
+
         @media (max-width: 500px) and (max-height: 700px) {
             #certificate-div {
                 background-image: url("{{asset('resources/imgs/certificate_lace.png')}}");
@@ -254,7 +379,7 @@
                 height: 40vh;
             }
 
-            #certificate-content p {
+            #certificate-content>p {
                 position: relative;
                 text-align: center;
                 font-weight: bold;
@@ -269,21 +394,21 @@
             }
 
             #personal-info-div {
-                position: relative;
+                position: absolute;
                 font-size: 0.625em;
                 font-weight: bold;
                 transform: scale(0.6);
-                left: -5em;
-                top: -4em;
-                line-height: 1.8em;
+                left: -22%;
+                top: 10%;
+                line-height: 2.2em;
             }
 
             #personal-info-img {
                 border: 1px solid #C9C9C9;
                 padding: 1px;
-                position: relative;
-                bottom: 13em;
-                left: 10em;
+                position: absolute;
+                bottom: 50%;
+                left: 70%;
             }
 
             #personal-info-img img {
@@ -296,20 +421,19 @@
             }
 
             #certificate-desc-div {
-                display: inline-block;
-            }
-
-            #certificate-desc-div p {
                 font-size: 0.8em;
                 margin-top: -2.4em;
                 text-align: justify;
-                line-height: 2em;
+                line-height: 10px;
                 transform: scale(0.6);
-                position: relative;
-                bottom: 14em;
-                left: -6em;
-                width: 26em;
+                position: absolute;
+                bottom: 25%;
+                left: -25%;
+                width: 135%;
                 padding: 0.8em;
+            }
+            #certificate-desc-div p{
+                line-height: 2em;
             }
 
             #wechat-code-div, #chapter-div {
@@ -320,7 +444,7 @@
                 margin-top: 0.8em;
                 position: absolute;
                 padding: 0.8em;
-                bottom: -11%;
+                bottom: -5%;
                 left: -8%;
                 transform: scale(0.6);
                 width: 5em;
@@ -360,7 +484,7 @@
                 height: 2.5em;
                 position: absolute;
                 left: 60%;
-                bottom: 10%;
+                bottom: 15%;
             }
         }
 
