@@ -23,7 +23,7 @@ class CreateMenuCategoriesTable extends Migration
             $table->string('icon_class')->nullable()->comment('顶级菜单图标，次级菜单无');
             $table->string('route')->nullable()->comment('路由名称');
             $table->string('url')->nullable()->comment('路由路径');
-            $table->json('ext')->nullable()->comment('扩展字段');
+            $table->string('ext')->nullable()->comment('扩展字段');
             $table->softDeletes();
             $table->timestamps();
         });
