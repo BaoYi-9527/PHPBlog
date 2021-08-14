@@ -2,12 +2,12 @@
     <div class="layui-row">
         <!--site name-->
         <div class="layui-col-xs4 layui-col-sm4 layui-col-md2" style="">
-            <div class="nav-site-name source-han-bold"><a href="">{{config('app.name')}}</a></div>
+            <div class="nav-site-name source-han-bold"><a href="{{route('frontend.home')}}">{{config('app.name')}}</a></div>
         </div>
         <!--nav menu-->
         <div class="layui-col-xs4 layui-col-sm4 layui-col-md8" style="">
             <ul class="layui-nav" lay-filter="">
-                <li class="layui-nav-item"><a href=""><i class="fa fa-flag"></i>首页</a></li>
+                <li class="layui-nav-item"><a href="{{route('frontend.home')}}"><i class="fa fa-flag"></i>首页</a></li>
                 <li class="layui-nav-item"><a href=""><i class="fa fa-cube"></i>大前端</a></li>
                 <li class="layui-nav-item">
                     <a href=""><i class="fa fa-code"></i>编程语言</a>
@@ -34,6 +34,12 @@
                 </li>
                 <li class="layui-nav-item">
                     <a href=""><i class="fa fa-coffee"></i>闲言碎语</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href=""><i class="fa fa-wrench"></i>工具集</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="{{route('frontend.tools.worry.excel')}}">Worry's Tools</a></dd>
+                    </dl>
                 </li>
             </ul>
         </div>
