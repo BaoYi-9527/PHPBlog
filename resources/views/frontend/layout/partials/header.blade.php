@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="{{asset('packages/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     <!--引入layui.css-->
     <link rel="stylesheet" href="{{asset('packages/layui/css/layui.css')}}">
+    <!--引入公共的css文件-->
+    <link rel="stylesheet" href="{{asset('resources/css/frontend/common.css')}}">
     <!--引入layui.js-->
     <script src="{{asset('packages/layui/layui.js')}}"></script>
+
+
 </head>

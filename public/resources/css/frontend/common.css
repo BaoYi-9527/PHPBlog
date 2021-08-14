@@ -1,0 +1,67 @@
+/*公用CSS文件：全局CSS样式在此处定义*/
+
+/*引入自定义字体*/
+@font-face {
+    font-family: 'source-han-serif-cn-bold';
+    src: url('../../font/source_han_serif/SourceHanSerifCN-Bold.otf');
+}
+@font-face {
+    font-family: 'source-han-serif-cn-regular';
+    src: url('../../font/source_han_serif/SourceHanSerifCN-Regular.otf');
+}
+
+/*常用公共样式*/
+.source-han-bold {
+    font-family: 'source-han-serif-cn-bold','MicroSoft Yahei',Georgia,serif;
+}
+.source-han-regular {
+    font-family: 'source-han-serif-cn-Regular','MicroSoft Yahei',Georgia,serif;
+}
+
+/*顶栏相关样式*/
+.top-bar-div {
+    border-bottom: 1px solid #f3f1f1;
+}
+.top-bar-div .layui-row div{
+    min-height: 64px;
+}
+.nav-site-name {
+    vertical-align: middle;
+    line-height: 60px;
+    text-align: center;
+    font-size: 20px;
+}
+.nav-site-name > a:hover{
+    color: #FFB800;
+}
+.layui-nav {
+    background-color: white !important;
+    text-align: center;
+}
+.layui-nav .layui-nav-item > a {
+    color: #666 !important;
+    font-family: 'source-han-serif-cn-bold','MicroSoft Yahei',Georgia,serif;
+    font-size: 16px;
+}
+.layui-nav .layui-nav-item > a:hover {
+    color: #FFB800 !important;
+}
+.layui-nav .layui-nav-item > a > i {
+    padding-right: 5px;
+}
+.layui-nav-child a {
+    font-family: 'source-han-serif-cn-Regular','MicroSoft Yahei',Georgia,serif;
+}
+.login-search-div {
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 60px;
+    text-align: right;
+    padding-right: 20px;
+}
+.login-search-div > i {
+    padding-left: 10px;
+}
+
+
+
