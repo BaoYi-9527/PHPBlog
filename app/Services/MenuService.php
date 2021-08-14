@@ -1,8 +1,10 @@
 <?php
 
+
 namespace App\Service;
 
-class CommonService
+
+class MenuService
 {
     # ------------------------------- public function ------------------------------- #
 

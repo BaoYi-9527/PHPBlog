@@ -38,6 +38,9 @@
     background-color: white !important;
     text-align: center;
 }
+.layui-nav-bar {
+    background-color: #FFB800 !important;
+}
 .layui-nav .layui-nav-item > a {
     color: #666 !important;
     font-family: 'source-han-serif-cn-bold','MicroSoft Yahei',Georgia,serif;
