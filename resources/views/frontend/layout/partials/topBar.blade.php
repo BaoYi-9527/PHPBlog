@@ -11,7 +11,7 @@
                 <li class="layui-nav-item"><a href=""><i class="fa fa-cube"></i>大前端</a></li>
                 <li class="layui-nav-item">
                     <a href=""><i class="fa fa-code"></i>编程语言</a>
-                    <dl class="layui-nav-child">
+                    <dl class="layui-nav-child layui-nav-child-c">
                         <dd><a href="">PHP</a></dd>
                         <dd><a href="">Golang</a></dd>
                         <dd><a href="">Python</a></dd>
@@ -19,7 +19,7 @@
                 </li>
                 <li class="layui-nav-item">
                     <a href=""><i class="fa fa-database"></i>数据库技术</a>
-                    <dl class="layui-nav-child">
+                    <dl class="layui-nav-child layui-nav-child-c">
                         <dd><a href="">MySQL</a></dd>
                         <dd><a href="">Redis</a></dd>
                         <dd><a href="">ElasticSearch</a></dd>
@@ -27,7 +27,7 @@
                 </li>
                 <li class="layui-nav-item">
                     <a href=""><i class="fa fa-tasks"></i>计算机基础</a>
-                    <dl class="layui-nav-child">
+                    <dl class="layui-nav-child layui-nav-child-c">
                         <dd><a href="">网络协议</a></dd>
                         <dd><a href="">操作系统</a></dd>
                     </dl>
@@ -37,7 +37,7 @@
                 </li>
                 <li class="layui-nav-item">
                     <a href=""><i class="fa fa-wrench"></i>工具集</a>
-                    <dl class="layui-nav-child">
+                    <dl class="layui-nav-child layui-nav-child-c">
                         <dd><a href="{{route('frontend.tools.worry.excel')}}">Worry's Tools</a></dd>
                     </dl>
                 </li>

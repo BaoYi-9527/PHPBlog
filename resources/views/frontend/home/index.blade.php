@@ -8,7 +8,7 @@
             height: 300px;
             position: relative;
             margin: 20px 0 20px;
-            border-radius: 10px;
+            border-radius: 10px !important;
             background-color: rgba(255,255,255,0);
             box-shadow: 0 1px 20px -6px rgba(0,0,0,.5);
             transition: box-shadow .3s ease;
@@ -20,9 +20,22 @@
             transform: scale(1.1,1.1);
         }
         .article-label-div > div {
-            float: left;
             height: 100%;
             overflow: hidden;
+            transform: rotate(0deg);
+            -webkit-transform:rotate(0deg);
+        }
+        .article-list-container .article-label-div:nth-of-type(odd) > div {
+            float: right;
+        }
+        .article-list-container .article-label-div:nth-of-type(odd)  .article-cover {
+            border-radius: 10px 0 0 10px;
+        }
+        .article-list-container .article-label-div:nth-of-type(even) > div {
+            float: left;
+        }
+        .article-list-container .article-label-div:nth-of-type(even)  .article-cover {
+            border-radius: 0 10px 10px 0;
         }
         .article-cover  img {
             width: 100%;
@@ -30,9 +43,77 @@
             object-fit: cover;
             pointer-events: none;
             transition: all .6s;
-            border-radius: 0 10px 10px 0;
+            /*transform-origin: 0 0;*/
+        }
+        .article-list-container .article-label-div:nth-of-type(odd) .article-cover  img {
+            border-radius: 10px 0 0 10px !important;
+        }
+        .article-list-container .article-label-div:nth-of-type(even) .article-cover  img {
+            border-radius: 0 10px 10px 0 !important;
+        }
+        .article-poster-content {
+            position: relative;
+            padding: 10px 20px;
+            width: 80%;
+            margin: 20px 10px 0;
+        }
+        .article-poster-content i {
+            margin-right: 5px;
+        }
+        .article-list-container .article-label-div:nth-of-type(even) .article-poster-content div {
+            text-align: left;
+        }
+        .article-list-container .article-label-div:nth-of-type(odd) .article-poster-content div {
+            text-align: right;
         }
 
+        .article-poster-content .article-publish-time {
+            color: #888;
+            font-size: 12px;
+            padding-bottom: 15px;
+        }
+        .article-poster-content .article-title {
+            color: #504e4e;
+        }
+        .article-poster-content .article-title:hover {
+            color: #FFB800;
+        }
+        .article-poster-content .article-meta {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            color: #888;
+            font-size: 12px;
+        }
+        .article-poster-content .article-meta span:nth-child(3):hover {
+            color: #FFB800;
+        }
+        .article-poster-content .article-meta span:nth-child(1), span:nth-child(2) {
+            margin-right: 10px;
+        }
+        .article-poster-content .article-desc {
+            color: rgba(0,0,0,.66);
+            width: 100%;
+            text-align: justify;
+        }
+        .article-poster-content .article-desc p {
+            height: 80px;
+            line-height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display:-webkit-box;
+            -webkit-box-orient:vertical;
+            -webkit-line-clamp:4;
+        }
+        .article-poster-bottom {
+            margin-top: 20px;
+        }
+        .article-poster-bottom i {
+            font-size: 30px;
+            color: #666;
+        }
+        .article-poster-bottom i:hover {
+            color: #FFB800;
+        }
     </style>
 @endsection
 
@@ -43,39 +124,59 @@
             layui-col-xs4 layui-col-sm4 layui-col-md6
             layui-col-xs-offset3 layui-col-sm-offset3
             layui-col-md-offset3">
+                @foreach($articles  as $article)
+                    <div class="article-label-div layui-col-md12">
+                        <div class="article-intro layui-col-md6">
+                            <div class="article-poster-content">
+                                <div class="article-publish-time source-han-regular">
+                                    <i class="fa fa-clock-o"></i>发布于 {{\Carbon\Carbon::parse($article['created_at'])->toDateString() }}
+                                </div>
+                                <div>
+                                    <a href="" class="article-title source-han-bold"><h3>{{$article['title']}}</h3></a>
+                                </div>
+                                <div class="article-meta">
+                                    <span><i class="fa fa-eye"></i>{{$article['views']}} 热度</span>
+                                    <span><i class="fa fa-commenting"></i>{{$article['comments_count']}} 条评论</span>
+                                    <span><i class="fa fa-folder"></i>待开发</span>
+                                </div>
+                                <div class="article-desc">
+                                    <p class="source-han-regular">{{$article['desc']}}</p>
+                                </div>
+                                <div class="article-poster-bottom">
+                                    <a href=""><i class="fa fa-ellipsis-h"></i></a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="article-cover layui-col-md6">
+                            <a href="">
+                                <img src="{{asset($article['cover'])}}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
                 <div class="article-label-div layui-col-md12">
                     <div class="article-intro layui-col-md6">
+                        <div class="article-poster-content">
+                            <div class="article-publish-time source-han-regular">
+                                <i class="fa fa-clock-o"></i>发布于 10 天前
+                            </div>
+                            <div>
+                                <a href="" class="article-title source-han-bold"><h3>Python从入门到入土</h3></a>
+                            </div>
+                            <div class="article-meta">
+                                <span><i class="fa fa-eye"></i>10086 热度</span>
+                                <span><i class="fa fa-commenting"></i>10086 条评论</span>
+                                <span><i class="fa fa-folder"></i>Python</span>
+                            </div>
+                            <div class="article-desc">
+                                <p class="source-han-regular">思源宋体支持四种不同的东亚语言（简体中文、繁体中文、日语和朝鲜语），7 种粗细类型中的每一种都有 65,535 个字形，可共同呈现一致的视觉美感。该字体还包含多个西方字形，支持拉丁语、希腊语和西里尔文脚本，这些字形均来源于 Source Serif。</p>
+                            </div>
+                            <div class="article-poster-bottom">
+                                <a href=""><i class="fa fa-ellipsis-h"></i></a>
+                            </div>
 
-                    </div>
-                    <div class="article-cover layui-col-md6">
-                        <a href="">
-                            <img src="{{asset('resources/imgs/covers/python.jpg')}}" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="article-label-div layui-col-md12">
-                    <div class="article-intro layui-col-md6">
-
-                    </div>
-                    <div class="article-cover layui-col-md6">
-                        <a href="">
-                            <img src="{{asset('resources/imgs/covers/python.jpg')}}" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="article-label-div layui-col-md12">
-                    <div class="article-intro layui-col-md6">
-
-                    </div>
-                    <div class="article-cover layui-col-md6">
-                        <a href="">
-                            <img src="{{asset('resources/imgs/covers/python.jpg')}}" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="article-label-div layui-col-md12">
-                    <div class="article-intro layui-col-md6">
-
+                        </div>
                     </div>
                     <div class="article-cover layui-col-md6">
                         <a href="">
