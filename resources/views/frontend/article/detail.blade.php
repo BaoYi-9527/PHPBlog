@@ -31,8 +31,6 @@
 <label for="editor-md-content"></label>
 <!--渲染必须从最左边开始 否则会被当做渲染内容一起渲染-->
 <textarea name="" id="editor-md-content" class="source-han-regular" style="display: none">
-[TOC]
-
 {{$article['content']}}
 </textarea>
                     </div>
