@@ -18,6 +18,9 @@
             margin-top: 70px;
             min-height: calc(100vh - 150px);
         }
+        a:hover {
+            color: #FFB800 !important;
+        }
     </style>
 @endsection
 
