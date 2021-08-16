@@ -15,12 +15,37 @@
             height: 100% !important;
         }
         .article-toc-container {
-            margin-top: 70px;
-            min-height: calc(100vh - 150px);
+            margin-top: 200px;
+            min-height: calc(100vh - 270px);
         }
         a:hover {
             color: #FFB800 !important;
         }
+        #article-info-div {
+            max-height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        .article-cover img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            pointer-events: none;
+        }
+        .article-head {
+            position: absolute;
+            top: 80px;
+            color: #fff;
+            width: 100%;
+        }
+        .article-head h2 {
+            text-align: center;
+            padding-bottom: 10px;
+        }
+        .article-head p {
+            text-align: center;
+        }
+
     </style>
 @endsection
 
@@ -29,6 +54,19 @@
         <div class="layui-row">
             <div class="article-detail-container layui-col-xs4 layui-col-sm4 layui-col-md6
             layui-col-xs-offset4 layui-col-sm-offset4 layui-col-md-offset3">
+                <div id="article-info-div">
+                    <div class="article-cover">
+                        <img src="{{$article['cover']}}" alt="">
+                    </div>
+                    <div class="article-head source-han-regular">
+                        <h2>{{$article['title']}}</h2>
+                        <p>
+                            <span style="margin-left: 10px">{{\Illuminate\Support\Carbon::parse($article['created_at'])->toDateString()}}</span>
+                            <span>· {{$article['views']}} 次阅读</span>
+                        </p>
+
+                    </div>
+                </div>
                 <div id="markdown-view-div">
                     <div id="markdown-article-content">
 <label for="editor-md-content"></label>
