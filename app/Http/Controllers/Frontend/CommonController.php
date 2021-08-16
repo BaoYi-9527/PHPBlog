@@ -20,8 +20,12 @@ class CommonController extends BaseController
     public function uploadFile(Request $request)
     {
         $dirPath  = $request->input('path');
-        $suffix   = $request->input('suffix');
-        $fileName = rtrim($request->file('file')->getClientOriginalName(), $suffix) . '_' . time() . '_' . rand(1000, 9999).'.xlsx';
+        $suffix   = $request->input('suffix','');
+        if ($suffix) {
+            $fileName = rtrim($request->file('file')->getClientOriginalName(), $suffix) . '_' . time() . '_' . rand(1000, 9999).'.xlsx';
+        } else {
+            $fileName = $request->file('file')->getClientOriginalName();
+        }
         $path     = $request->file('file')->storeAs($dirPath, $fileName);
         return $this->successResponse(['path' => $path, 'file_name' => $fileName]);
     }

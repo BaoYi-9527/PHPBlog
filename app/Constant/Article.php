@@ -8,7 +8,7 @@ interface Article {
     const STATUS_HIDDEN    = 2;
     const STATUS_LIST      = [
         self::STATUS_DRAFT     => '草稿',
-        self::STATUS_PUBLISHED => '已发布',
-        self::STATUS_HIDDEN    => '隐藏',
+        self::STATUS_PUBLISHED => '公开',
+        self::STATUS_HIDDEN    => '私密',
     ];
 }

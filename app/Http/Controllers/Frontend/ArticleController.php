@@ -14,7 +14,7 @@ class ArticleController extends BaseController
     public function detail(Request $request)
     {
         $id = $request->input('id');
-        $article = ArticleService::getAricleByID($id);
+        $article = ArticleService::getArticleByID($id);
 
         return view('frontend.article.detail')
             ->with('article', $article);

@@ -34,11 +34,32 @@ class ArticleService
      * @param $id
      * @return mixed
      */
-    public static function getAricleByID($id)
+    public static function getArticleByID($id)
     {
         return Article::find($id);
     }
 
+    /**
+     * Notes:保存或更新
+     * User: weicheng
+     * DateTime: 2021/8/16 17:55
+     * @param $params
+     * @param string $id
+     * @return bool
+     */
+    public static function saveOrUpdate($params, $id = '')
+    {
+        if ($id) {
+            $res = Article::where('id', $id)->update($params);
+        } else {
+            $article = new Article();
+            foreach ($params as $key => $value) {
+                $article->{$key} = $value;
+            }
+            $res = $article->save();
+        }
+        return $res;
+    }
 
     # ------------------------------- private function ------------------------------- #
 
