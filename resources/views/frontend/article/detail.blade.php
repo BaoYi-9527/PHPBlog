@@ -24,10 +24,8 @@
 @section('container')
     <div class="layui-fluid">
         <div class="layui-row">
-            <div class="article-detail-container
-            layui-col-xs4 layui-col-sm4 layui-col-md6
-            layui-col-xs-offset4 layui-col-sm-offset4
-            layui-col-md-offset3">
+            <div class="article-detail-container layui-col-xs4 layui-col-sm4 layui-col-md6
+            layui-col-xs-offset4 layui-col-sm-offset4 layui-col-md-offset3">
                 <div id="markdown-view-div">
                     <div id="markdown-article-content">
 <label for="editor-md-content"></label>

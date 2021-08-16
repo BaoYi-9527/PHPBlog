@@ -32,8 +32,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
     }
 
@@ -47,8 +45,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
         $this->mapWebRoutes();
         $this->mapFrontendRoutes();
-
-        //
+        $this->mapAdminRoutes();
     }
 
     /**
@@ -91,5 +88,19 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->frontendNamespace)
             ->name('frontend.')
             ->group(base_path('routes/frontend.php'));
+    }
+
+    /**
+     * Notes:定义后台路由应用
+     * User: weicheng
+     * DateTime: 2021/8/16 15:18
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->adminNamespace)
+            ->prefix('admin')
+            ->name('admin.')
+            ->group(base_path('routes/admin.php'));
     }
 }

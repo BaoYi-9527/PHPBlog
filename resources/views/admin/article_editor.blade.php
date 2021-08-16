@@ -21,15 +21,12 @@
     <div class="layui-fluid">
         <div class="layui-row">
             <div class="article-detail-container
-            layui-col-xs4 layui-col-sm4 layui-col-md8
-            layui-col-xs-offset3 layui-col-sm-offset3
-            layui-col-md-offset2">
+            layui-col-xs12 layui-col-sm12 layui-col-md10
+            layui-col-xs-offset0 layui-col-sm-offset0
+            layui-col-md-offset1">
                 <div id="test-editor">
                     <label for="editor-md-content"></label>
-                    <textarea name="" id="editor-md-content" style="display: none">
-                    ### 关于 Editor.md
-
-**Editor.md** 是一款开源的、可嵌入的 Markdown 在线编辑器（组件），基于 CodeMirror、jQuery 和 Marked 构建。</textarea>
+                    <textarea name="" id="editor-md-content" style="display: none"></textarea>
                 </div>
 
             </div>
