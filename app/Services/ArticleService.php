@@ -27,6 +27,17 @@ class ArticleService
 
     # ------------------------------- static function ------------------------------- #
 
+    /**
+     * Notes:获取文章
+     * User: weicheng
+     * DateTime: 2021/8/16 12:18
+     * @param $id
+     * @return mixed
+     */
+    public static function getAricleByID($id)
+    {
+        return Article::find($id);
+    }
 
 
     # ------------------------------- private function ------------------------------- #

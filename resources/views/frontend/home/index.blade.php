@@ -132,7 +132,7 @@
                                     <i class="fa fa-clock-o"></i>发布于 {{\Carbon\Carbon::parse($article['created_at'])->toDateString() }}
                                 </div>
                                 <div>
-                                    <a href="" class="article-title source-han-bold"><h3>{{$article['title']}}</h3></a>
+                                    <a href="{{route('frontend.article.detail',['id' => $article['id']])}}" class="article-title source-han-bold"><h3>{{$article['title']}}</h3></a>
                                 </div>
                                 <div class="article-meta">
                                     <span><i class="fa fa-eye"></i>{{$article['views']}} 热度</span>
@@ -143,13 +143,13 @@
                                     <p class="source-han-regular">{{$article['desc']}}</p>
                                 </div>
                                 <div class="article-poster-bottom">
-                                    <a href=""><i class="fa fa-ellipsis-h"></i></a>
+                                    <a href="{{route('frontend.article.detail',['id' => $article['id']])}}"><i class="fa fa-ellipsis-h"></i></a>
                                 </div>
 
                             </div>
                         </div>
                         <div class="article-cover layui-col-md6">
-                            <a href="">
+                            <a href="{{route('frontend.article.detail',['id' => $article['id']])}}">
                                 <img src="{{asset($article['cover'])}}" alt="">
                             </a>
                         </div>

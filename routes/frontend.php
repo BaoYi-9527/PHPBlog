@@ -14,7 +14,7 @@ Route::any('get/files','CommonController@getFiles')->name('common.getFiles');
 # 测试地址
 Route::any('test','TestController@index')->name('common.test');
 
-
+# 工具相关路由
 Route::prefix('tools')->name('tools.')->namespace('Tools')->group(function (){
     # worry's tools
     Route::prefix('worry')->name('worry.')->group(function () {
@@ -27,6 +27,11 @@ Route::prefix('tools')->name('tools.')->namespace('Tools')->group(function (){
     });
 });
 
+# 文章相关路由
+Route::prefix('article')->name('article.')->group(function () {
+    # 文章页
+    Route::get('detail','ArticleController@detail')->name('detail');
+});
 
 
 
