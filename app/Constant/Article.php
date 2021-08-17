@@ -11,4 +11,6 @@ interface Article {
         self::STATUS_PUBLISHED => '公开',
         self::STATUS_HIDDEN    => '私密',
     ];
+    # 默认封面地址
+    const DEFAULT_COVER_PATH = '/resources/imgs/covers/animal_party_yellow_dog.png';
 }

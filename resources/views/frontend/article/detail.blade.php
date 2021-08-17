@@ -1,4 +1,4 @@
-@extends('frontend.layout.master')
+@extends('layout.master')
 
 @section('app-css')
     <!--引入md编辑器CSS样式-->
@@ -45,7 +45,6 @@
         .article-head p {
             text-align: center;
         }
-
     </style>
 @endsection
 

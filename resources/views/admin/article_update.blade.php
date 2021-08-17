@@ -60,7 +60,7 @@
                                 <div class="layui-inline" id="article-title-div">
                                     <label for="article-title" class="layui-form-label">文章标题：</label>
                                     <div class="layui-input-inline">
-                                        <input class="layui-input" type="text" id="article-title" name="title" placeholder="请输入文章标题...">
+                                        <input class="layui-input" value="{{$article['title']}}" type="text" id="article-title" name="title" placeholder="请输入文章标题...">
                                     </div>
                                 </div>
                                 <div class="layui-inline">
@@ -68,7 +68,7 @@
                                     <div class="layui-input-inline">
                                         <select name="status" id="article-status" class="layui-input">
                                             @foreach(\App\Constant\Article::STATUS_LIST as $key => $value)
-                                                <option value="{{$key}}">{{$value}}</option>
+                                                <option @if($article['status'] == $key) selected @endif value="{{$key}}">{{$value}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -77,8 +77,8 @@
                                     <label for="article-is-top" class="layui-form-label">是否置顶：</label>
                                     <div class="layui-input-inline">
                                         <select name="is_top" id="article-is-top" class="layui-input">
-                                            <option value="0">否</option>
-                                            <option value="1">是</option>
+                                            <option @if($article['is_top'] == 0) selected @endif value="0">否</option>
+                                            <option @if($article['is_top'] == 1) selected @endif value="1">是</option>
                                         </select>
                                     </div>
                                 </div>
@@ -94,14 +94,14 @@
                                 <div class="layui-inline" id="article-desc-div">
                                     <label for="article-desc" class="layui-form-label">文章描述：</label>
                                     <div class="layui-input-inline">
-                                        <textarea name="desc" id="article-desc" class="layui-input" placeholder="请输入文章描述..."></textarea>
+                                        <textarea name="desc" id="article-desc" class="layui-input" placeholder="请输入文章描述...">{{$article['desc']}}</textarea>
                                     </div>
                                 </div>
                                 <div class="layui-inline">
                                     <label for="article-label" class="layui-form-label">所属标签：</label>
                                     <div class="layui-input-inline">
                                         <select name="label_id" id="article-label" class="layui-input">
-                                            <option value="">待开发</option>
+                                            <option @if($article['label_id'] == 0) selected @endif value="">待开发</option>
                                         </select>
                                     </div>
                                 </div>
@@ -109,13 +109,13 @@
                                     <label for="article-cate" class="layui-form-label">菜单分类：</label>
                                     <div class="layui-input-inline">
                                         <select name="cate_id" id="article-cate" class="layui-input">
-                                            <option value="">待开发</option>
+                                            <option @if($article['cate_id'] == 0) selected @endif value="">待开发</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="layui-inline">
                                     <div class="layui-input-inline">
-                                        <button type="button" class="layui-btn layui-btn-warm" id="publish-article-button">发布文章</button>
+                                        <button type="button" class="layui-btn layui-btn-warm" article-id="{{$article['id']}}" id="publish-article-button">发布文章</button>
                                     </div>
                                 </div>
                             </div>
@@ -123,7 +123,9 @@
                     </div>
                     <div id="markdown-editor">
                         <label for="editor-md-content"></label>
-                        <textarea name="" id="editor-md-content" style="display: none"></textarea>
+<textarea name="" id="editor-md-content" style="display: none">
+{{$article['content']}}
+</textarea>
                     </div>
 
                 </div>
@@ -150,15 +152,12 @@
 
             // 发布文章
             $('#publish-article-button').click(function () {
+                let articleId = $(this).attr('article-id')
                 let imgURL =  $('#upload-img-button').attr('img-url')
-                if(imgURL === undefined || imgURL === '') {
-                    layer.msg('请上传文章封面图')
-                } else {
-                    let formString = $('#article-form-div>form').serialize()
-                    let markdownCode = editor.getMarkdown()
-                    let data = formString + '&markdown_code=' + markdownCode + '&cover=' +imgURL
-                    request('publish','POST',data)
-                }
+                let formString = $('#article-form-div>form').serialize()
+                let markdownCode = editor.getMarkdown()
+                let data = formString + '&markdown_code=' + markdownCode + '&cover=' + imgURL + '&id=' + articleId
+                request('publish','POST',data)
             })
         });
 

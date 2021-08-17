@@ -47,7 +47,7 @@
         <div class="layui-col-xs4 layui-col-sm4 layui-col-md2" style="">
             <div class="login-search-div">
 {{--                <i class="fa fa-search"></i>--}}
-                <i class="fa fa-user-circle"></i>
+                <span><i class="fa fa-user-circle"></i></span>
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-@extends('frontend.layout.master')
+@extends('layout.master')
 
 @section('app-css')
     <style>
@@ -161,7 +161,7 @@
 @endsection
 
 <!--页脚-->
-@include('frontend.layout.partials.footer')
+@include('layout.partials.footer')
 
 @section('hidden-content')
 
