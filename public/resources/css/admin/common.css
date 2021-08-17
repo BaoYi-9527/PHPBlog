@@ -1,0 +1,52 @@
+aside {
+    height: calc(100vh - 200px);
+    float: left;
+    width: 100px;
+    display: inline;
+}
+main {
+    display: inline;
+    margin-left: 100px;
+    float: left;
+    width: calc(100vw - 206px);
+}
+main .layui-fluid {
+    padding: 0;
+}
+.layui-nav-itemed>.layui-nav-child {
+    background-color: white !important;
+    color: #666 !important;
+}
+.layui-nav .layui-nav-item a {
+    color: #666;
+}
+.layui-nav .layui-nav-item a:hover {
+    color: #FE9600;
+}
+.layui-nav-a {
+    color: #FE9600 !important;
+}
+/*分页样式*/
+.pagination {
+    text-align: right;
+}
+.pagination li{
+    display: inline-block;
+    border: 1px solid #666;
+    padding: 5px 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'source-han-serif-cn-bold','MicroSoft Yahei',Georgia,serif;
+    vertical-align: middle;
+}
+.pagination li:hover {
+    border-color: #FE9600;
+    background-color: #FE9600;
+    color: #fff;
+}
+.pagination .active {
+    border-color: #FE9600;
+    background-color: #FE9600;
+    color: #fff;
+}
+
