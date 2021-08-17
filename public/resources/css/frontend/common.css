@@ -81,6 +81,22 @@
 .login-search-div > i {
     padding-left: 10px;
 }
-
-
+/*页脚*/
+#footer-div {
+    position: absolute;
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    bottom: 20px;
+    width: 100vw;
+}
+#footer-div a:hover {
+    color: #FFB800;
+}
+#footer-div p {
+    margin-bottom: 5px;
+}
+#footer-div p span {
+    margin-right: 0;
+}
 

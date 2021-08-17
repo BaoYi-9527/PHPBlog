@@ -160,6 +160,9 @@
     </div>
 @endsection
 
+<!--页脚-->
+@include('frontend.layout.partials.footer')
+
 @section('hidden-content')
 
 @endsection

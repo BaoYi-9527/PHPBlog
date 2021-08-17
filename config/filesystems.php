@@ -77,7 +77,7 @@ return [
     | the locations of the links and the values should be their targets.
     |
     */
-
+    # 符号链接
     'links' => [
         public_path('storage') => env('STORAGE_PUBLIC_LINK', storage_path('app/public')),
         public_path('worry')   => env('STORAGE_WORRY_LINK', storage_path('app/worry')),
