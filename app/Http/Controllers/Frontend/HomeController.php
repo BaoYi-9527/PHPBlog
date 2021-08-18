@@ -25,7 +25,7 @@ class HomeController extends BaseController
 
         $res = (new ArticleService())->articleQuery([
             'id','title','views','cover','desc','comments_count','created_at'
-        ],$conditions)->paginate($pageSize);
+        ],$conditions)->orderBy('is_top','desc')->latest()->paginate($pageSize);
 
         return view('frontend.home.index')
             ->with('articles',$res);
