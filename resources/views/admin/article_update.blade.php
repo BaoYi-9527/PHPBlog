@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="layui-inline">
                                     <div class="layui-input-inline">
-                                        <button type="button" class="layui-btn layui-btn-primary" id="upload-img-button" img-url="">
+                                        <button type="button" class="layui-btn layui-btn-primary" id="upload-img-button" img-url="{{$article['cover']}}">
                                             <i class="layui-icon">&#xe67c;</i>上传封面图
                                         </button>
                                     </div>
