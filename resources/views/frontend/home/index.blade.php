@@ -2,6 +2,10 @@
 
 @section('app-css')
     <style>
+        .layui-fluid {
+            padding: 0;
+            margin-right: calc(100% - 100vw);
+        }
         .article-label-div {
             float: left;
             width: 100%;

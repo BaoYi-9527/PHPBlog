@@ -27,6 +27,11 @@
 * {
     box-sizing: border-box;
 }
+/*解决滚动条带来的宽度变化*/
+html {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 
 /*常用公共样式*/
 .source-han-bold {
