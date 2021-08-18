@@ -64,6 +64,17 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
         ],
+        'aliyun' => [
+            'driver'     => 'aliyun',
+            'access_id'  => env('ALIYUN_OSS_ACCESS_ID'),             // For example: LTAI4**************qgcsA
+            'access_key' => env('ALIYUN_OSS_ACCESS_KEY'),            // For example: PkT4F********************Bl9or
+            'bucket'     => env('ALIYUN_OSS_BUCKET'),                // For example: my-storage
+            'endpoint'   => env('ALIYUN_OSS_ENDPOINT'),              // For example: oss-cn-shanghai.aliyuncs.com
+            'internal'   => env('ALIYUN_OSS_INTERNAL', null),        // For example: oss-cn-shanghai-internal.aliyuncs.com
+            'domain'     => env('ALIYUN_OSS_DOMAIN', null),          // For example: oss.my-domain.com
+            'use_ssl'    => env('ALIYUN_OSS_USE_SSL', false),        // Whether to use https
+            'prefix'     => env('ALIYUN_OSS_PREFIX', null),          // The prefix of the store path
+        ],
 
     ],
 

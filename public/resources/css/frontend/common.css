@@ -3,11 +3,13 @@
 /*引入自定义字体*/
 @font-face {
     font-family: 'source-han-serif-cn-bold';
-    src: url('../../font/source_han_serif/SourceHanSerifCN-Bold.otf');
+    src: url('https://lifewonder.oss-cn-shenzhen.aliyuncs.com/fonts/SourceHanSerifCN-Bold.otf');
+    /*src: url('../../font/source_han_serif/SourceHanSerifCN-Bold.otf');*/
 }
 @font-face {
     font-family: 'source-han-serif-cn-regular';
-    src: url('../../font/source_han_serif/SourceHanSerifCN-Regular.otf');
+    src: url('https://lifewonder.oss-cn-shenzhen.aliyuncs.com/fonts/SourceHanSerifCN-Regular.otf');
+    /*src: url('../../font/source_han_serif/SourceHanSerifCN-Regular.otf');*/
 }
 
 ::-webkit-scrollbar {

@@ -110,6 +110,9 @@
       <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
       <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
       <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/aliyuncs/oss-sdk-php" />
+      <path value="$PROJECT_DIR$/vendor/alphasnow/aliyun-oss-laravel" />
+      <path value="$PROJECT_DIR$/vendor/alphasnow/aliyun-oss-flysystem" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
