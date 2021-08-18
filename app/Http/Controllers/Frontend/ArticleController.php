@@ -16,6 +16,10 @@ class ArticleController extends BaseController
         $id = $request->input('id');
         $article = ArticleService::getArticleByID($id);
 
+        # 更新浏览量
+        $clientIp = $request->getClientIp();
+        ArticleService::viewsAdd($id,$clientIp.'_'.$id);
+
         return view('frontend.article.detail')
             ->with('article', $article);
     }
