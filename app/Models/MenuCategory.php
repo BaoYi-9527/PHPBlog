@@ -15,7 +15,7 @@ class MenuCategory extends BaseModel
     # 软删除
     use SoftDeletes;
     # 批量赋值
-    protected $fillable = [
+    public $fillable = [
         "name",
         "status",
         "level",
