@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin;
 use App\Constant\Article;
 use App\Http\Controllers\BaseController;
 use App\Services\ArticleService;
+use App\Services\MenuService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,7 +22,9 @@ class ArticleController extends BaseController
      */
     public function editor(Request $request)
     {
-        return view('admin.article_editor');
+        $menuCategories = (new MenuService())->menuCategories();
+        return view('admin.article_editor')
+            ->with('menuCategories',$menuCategories);
     }
 
     /**
@@ -37,16 +40,10 @@ class ArticleController extends BaseController
             'title'         => 'required',
             'desc'          => 'required',
             'markdown_code' => 'required',
-//            'cover'         => 'required',
-//            'label_id'      => 'required',
-//            'cate_id'       => 'required',
         ],[
             'title.required'         => '文章标题必填',
             'desc.required'          => '文章描述必填',
             'markdown_code.required' => '文章内容必填',
-//            'cover.required'         => '封面图片必传',
-//            'label_id.required'      => '标签必选',
-//            'cate_id.required'       => '菜单分类必选',
         ]);
         if ($validator->fails()) {
             return $this->errorMessage($validator->errors()->first());
@@ -57,7 +54,7 @@ class ArticleController extends BaseController
             'status'   => $request->input('status', 0), #默认草稿状态
             'is_top'   => $request->input('is_top', 0),
 //            'label_id' => $request->input('label_id', '') ?? '',
-//            'cate_id'  => $request->input('cate_id', 0) ?? 0,
+            'cate_id'  => $request->cate_id ?? 1,
             'cover'    => empty($cover) ? Article::DEFAULT_COVER_PATH : $cover,
             'desc'     => $request->input('desc'),
             'content'  => $request->input('markdown_code')
@@ -76,11 +73,10 @@ class ArticleController extends BaseController
      */
     public function list(Request $request)
     {
-        $pageSize = $request->input('page_size',10);
-
-        $res = (new ArticleService())->articleQuery([
-            'id','title','status','is_top','label_id','cate_id','views',
-            'comments_count','created_at','updated_at','deleted_at'
+        $pageSize = $request->input('page_size', 10);
+        $res      = (new ArticleService())->articleQuery([
+             'id', 'title', 'status', 'is_top', 'label_id', 'cate_id', 'views',
+             'comments_count', 'created_at', 'updated_at', 'deleted_at'
         ])->paginate($pageSize);
 
         return view('admin.article_list')
@@ -96,10 +92,11 @@ class ArticleController extends BaseController
      */
     public function update(Request $request)
     {
-        $id = $request->input('id','');
-        $article = ArticleService::getArticleByID($id);
-
+        $id             = $request->input('id', '');
+        $article        = ArticleService::getArticleByID($id);
+        $menuCategories = (new MenuService())->menuCategories();
         return view('admin.article_update')
+            ->with('menuCategories',$menuCategories)
             ->with('article',$article);
     }
 }

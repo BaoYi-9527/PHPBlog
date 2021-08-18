@@ -6,6 +6,19 @@
         <language minSize="132" name="PHP" />
       </Languages>
     </inspection_tool>
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="4">
+            <item index="0" class="java.lang.String" itemvalue="lay-filter" />
+            <item index="1" class="java.lang.String" itemvalue="lay-unselect" />
+            <item index="2" class="java.lang.String" itemvalue="img-url" />
+            <item index="3" class="java.lang.String" itemvalue="article-id" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>

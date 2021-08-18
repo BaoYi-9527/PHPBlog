@@ -109,7 +109,9 @@
                                     <label for="article-cate" class="layui-form-label">菜单分类：</label>
                                     <div class="layui-input-inline">
                                         <select name="cate_id" id="article-cate" class="layui-input">
-                                            <option value="">待开发</option>
+                                            @foreach($menuCategories as $menuCate)
+                                                <option value="{{$menuCate['id']}}">{{$menuCate['name']}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

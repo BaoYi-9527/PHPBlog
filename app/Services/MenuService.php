@@ -4,6 +4,7 @@
 namespace App\Services;
 
 
+use App\Constant\Menu;
 use App\Models\MenuCategory;
 
 class MenuService
@@ -19,7 +20,7 @@ class MenuService
     public function menuInit()
     {
         $fields   = ['id', 'name', 'status', 'level', 'sort', 'pid', 'icon_class', 'route', 'url'];
-        $menus    = MenuCategory::select($fields)->where('status', 1)->get();
+        $menus    = MenuCategory::select($fields)->where('status', Menu::STATUS_NORMAL)->get();
         $topMenus = $menus->where('level', 1)->sortBy('sort')->toArray();
         $subMenus = $menus->where('level', 2)->groupBy('pid')->toArray();
         $menuArr  = [];
@@ -31,6 +32,20 @@ class MenuService
             $menuArr[] = $topMenu;
         }
         return $menuArr;
+    }
+
+    /**
+     * Notes:获取可供文章选择的菜单分类（有路由的分类）
+     * User: weicheng
+     * DateTime: 2021/8/18 12:30
+     * @return mixed
+     */
+    public function menuCategories()
+    {
+        $fields   = ['id', 'name', 'status','route'];
+        return MenuCategory::select($fields)
+            ->where('status',Menu::STATUS_NORMAL)
+            ->where('route','!=','')->get();
     }
 
     # ------------------------------- static function ------------------------------- #
