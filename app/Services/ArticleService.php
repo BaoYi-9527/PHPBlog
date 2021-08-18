@@ -19,10 +19,13 @@ class ArticleService
      */
     public function articleQuery($fields = [], $conditions = [])
     {
+        $cateId = $conditions['cate_id'] ?? '';
         return Article::where('status',ArticleConstant::STATUS_PUBLISHED)
-            ->when($fields, function ($query) use ($fields) {
-            return $query->select($fields);
-        });
+            ->when($cateId, function ($query) use ($cateId) {
+                return $query->where('cate_id',$cateId);
+            })->when($fields, function ($query) use ($fields) {
+                return $query->select($fields);
+            });
     }
 
     # ------------------------------- static function ------------------------------- #

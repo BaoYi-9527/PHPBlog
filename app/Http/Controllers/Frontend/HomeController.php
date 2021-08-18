@@ -17,11 +17,15 @@ class HomeController extends BaseController
      */
     public function index(Request $request)
     {
-        $pageSize = $request->input('page_size',10);
+        $pageSize = $request->input('page_size', 10);
+        $cateId   = $request->input('id', '');
+
+        $conditions = [];
+        if (!empty($cateId) && $cateId != 1) $conditions['cate_id'] = $cateId;   # 菜单分类 1为首页 首页不限分类
 
         $res = (new ArticleService())->articleQuery([
             'id','title','views','cover','desc','comments_count','created_at'
-        ])->paginate($pageSize);
+        ],$conditions)->paginate($pageSize);
 
         return view('frontend.home.index')
             ->with('articles',$res);
