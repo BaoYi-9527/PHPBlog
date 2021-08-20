@@ -6,6 +6,9 @@
             padding: 0;
             margin-right: calc(100% - 100vw);
         }
+        #layui-fluid-body {
+            min-height: calc(100vh - 180px);
+        }
         .article-label-div {
             float: left;
             width: 100%;
@@ -122,7 +125,7 @@
 @endsection
 
 @section('container')
-    <div class="layui-fluid">
+    <div class="layui-fluid" id="layui-fluid-body">
         <div class="layui-row">
             <div class="article-list-container
             layui-col-xs4 layui-col-sm4 layui-col-md6
@@ -163,9 +166,6 @@
         </div>
     </div>
 @endsection
-
-<!--页脚-->
-@include('layout.partials.footer')
 
 @section('hidden-content')
 
