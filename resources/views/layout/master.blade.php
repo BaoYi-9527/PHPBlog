@@ -11,6 +11,8 @@
     @yield('container')
     <!--隐藏区域(弹窗等)-->
     @yield('hidden-content')
+    <!--页脚-->
+    @include('layout.partials.footer')
     <!--公共js脚本加载区域-->
     @include('layout.partials.script')
     <!--页面js脚本加载区域-->

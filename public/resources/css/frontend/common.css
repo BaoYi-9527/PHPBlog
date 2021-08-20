@@ -91,12 +91,14 @@ html {
 }
 /*页脚*/
 #footer-div {
-    position: absolute;
     text-align: center;
     color: #666;
     font-size: 12px;
-    bottom: 20px;
+    bottom: 0;
     width: 100vw;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    clear: both;
 }
 #footer-div a:hover {
     color: #FFB800;
