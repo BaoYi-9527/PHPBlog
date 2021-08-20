@@ -121,6 +121,21 @@
         .article-poster-bottom i:hover {
             color: #FFB800;
         }
+        .flow-load-span {
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 1px solid #d6d6d6;
+            color: #adadad;
+        }
+        .flow-load-span:hover {
+            border-color: #FE9600;
+            color: #FE9600;
+            cursor: pointer;
+            box-shadow: 0 0 4px rgba(255,165,0,.85);
+        }
+        .no-more-span {
+            color: #adadad;
+        }
     </style>
 @endsection
 
@@ -164,6 +179,21 @@
                 @endforeach
             </div>
         </div>
+        <!--流加载-->
+        <div class="layui-row" style="margin-top: 50px">
+            <div class="layui-col-xs4 layui-col-sm4 layui-col-md6
+            layui-col-xs-offset3 layui-col-sm-offset3
+            layui-col-md-offset3" style="text-align: center">
+                    <span class="flow-load-span source-han-regular" page="{{$articles->currentPage()}}" last-page="{{$articles->lastPage()}}"
+                         @if($articles->currentPage() >= $articles->lastPage()) hidden @endif>
+                        Previous
+                    </span>
+                    <span class="no-more-span source-han-regular"
+                          @if($articles->currentPage() < $articles->lastPage()) hidden @endif>
+                        没有更多了...
+                    </span>
+            </div>
+        </div>
     </div>
 @endsection
 
@@ -173,6 +203,23 @@
 
 @section('app-js')
     <script type="text/javascript">
-
+        // 流加载
+        $('.flow-load-span').click(function () {
+            let nextPage = Number($(this).attr('page')) + 1
+            $(this).attr('page', nextPage)
+            let lastPage = Number($(this).attr('last-page'))
+            if(nextPage >= lastPage) {
+                $(this).hide()
+                $('.no-more-span').show()
+            }
+            let searchString = location.search
+            if(searchString === '') searchString = '?id=1'
+            $.get('/article/list' + searchString + '&page=' + nextPage, function (response) {
+                console.log(response)
+                if(response !== '') {
+                    $('.article-list-container').append(response)
+                }
+            })
+        })
     </script>
 @endsection

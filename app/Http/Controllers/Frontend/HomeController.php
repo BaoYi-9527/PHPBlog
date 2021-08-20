@@ -17,7 +17,7 @@ class HomeController extends BaseController
      */
     public function index(Request $request)
     {
-        $pageSize = $request->input('page_size', 10);
+        $pageSize = $request->input('page_size', 5);
         $cateId   = $request->input('id', '');
 
         $conditions = [];

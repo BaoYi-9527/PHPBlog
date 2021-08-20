@@ -31,6 +31,8 @@ Route::prefix('tools')->name('tools.')->namespace('Tools')->group(function (){
 Route::prefix('article')->name('article.')->group(function () {
     # 文章页
     Route::get('detail','ArticleController@detail')->name('detail');
+    # 获取文章列表 主要用于流加载
+    Route::get('list','ArticleController@list')->name('list');
 });
 
 
