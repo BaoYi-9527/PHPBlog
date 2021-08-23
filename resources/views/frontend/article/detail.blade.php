@@ -49,13 +49,14 @@
         }
         /*md编辑器样式调整*/
         .article-detail-container li {
-            list-style-type: decimal !important;
+            list-style: circle;
         }
         pre {
             background-color: #23241f !important;
         }
         pre li {
             background-color:  #23241f !important;
+            list-style: decimal !important;
         }
     </style>
 @endsection
