@@ -3,6 +3,8 @@
 @section('app-css')
     <!--引入md编辑器CSS样式-->
     <link rel="stylesheet" href="{{asset('packages/editor.md/css/editormd.preview.css')}}">
+    <!--引入代码高亮CSS样式-->
+    <link rel="stylesheet" href="{{asset('packages/highlight/styles/monokai-sublime.min.css')}}">
     <style>
         .article-detail-container {
             /*background-color: #cccccc;*/
@@ -44,6 +46,16 @@
         }
         .article-head p {
             text-align: center;
+        }
+        /*md编辑器样式调整*/
+        .article-detail-container li {
+            list-style-type: decimal !important;
+        }
+        pre {
+            background-color: #23241f !important;
+        }
+        pre li {
+            background-color:  #23241f !important;
         }
     </style>
 @endsection
@@ -90,6 +102,8 @@
 @endsection
 
 @section('app-js')
+    <!--代码高亮引入JS-->
+    <script src="{{asset('packages/highlight/highlight.min.js')}}"></script>
     <!--引入md编辑器JS-->
     <script src="{{asset('packages/editor.md/editormd.js')}}"></script>
     <script src="{{asset('packages/editor.md/lib/marked.min.js')}}"></script>
@@ -101,6 +115,8 @@
                 // htmlDecode : true,  // Enable / disable HTML tag encode.
                 // htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML tags for website security.
             });
+            // 代码高亮
+            hljs.highlightAll();
         });
         $(function () {
             let selector = $('.editormd-markdown-toc')

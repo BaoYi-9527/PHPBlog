@@ -150,6 +150,10 @@
                 saveHTMLToTextarea: true
             });
 
+            // 设置主题
+            // editor.setTheme('dark')
+            // editor.setEditorTheme('monokai')
+
             // 发布文章
             $('#publish-article-button').click(function () {
                 let imgURL =  $('#upload-img-button').attr('img-url')

@@ -25,6 +25,11 @@ Route::prefix('tools')->name('tools.')->namespace('Tools')->group(function (){
         # 加载配置文件
         Route::post('loadConfig','WorryController@loadConfig')->name('loadConfig');
     });
+    # SVG
+    Route::prefix("svg")->name('svg.')->group(function () {
+        # 展示页
+        Route::get('index','SvgController@index')->name('index');
+    });
 });
 
 # 文章相关路由

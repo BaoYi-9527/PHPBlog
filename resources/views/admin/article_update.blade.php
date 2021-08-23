@@ -151,6 +151,9 @@
                 path   : "/packages/editor.md/lib/",
                 saveHTMLToTextarea: true
             });
+            // 设置主题
+            editor.setTheme('dark')
+            // editor.setEditorTheme('monokai')
 
             // 发布文章
             $('#publish-article-button').click(function () {
