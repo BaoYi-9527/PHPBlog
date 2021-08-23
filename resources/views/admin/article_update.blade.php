@@ -152,7 +152,7 @@
                 saveHTMLToTextarea: true
             });
             // 设置主题
-            editor.setTheme('dark')
+            // editor.setTheme('dark')
             // editor.setEditorTheme('monokai')
 
             // 发布文章
