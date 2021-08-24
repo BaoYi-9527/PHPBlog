@@ -48,6 +48,21 @@ class MenuService
             ->where('route','!=','')->get();
     }
 
+    /**
+     * Notes:获取菜单分类
+     * User: weicheng
+     * DateTime: 2021/8/24 17:09
+     * @param array $fields
+     * @param array $conditions
+     * @return MenuCategory|\Illuminate\Database\Concerns\BuildsQueries|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|mixed
+     */
+    public function queryBuilder($fields= [],$conditions = [])
+    {
+        return MenuCategory::withTrashed()->when($fields,function ($query) use ($fields) {
+            return $query->select($fields);
+        });
+    }
+
     # ------------------------------- static function ------------------------------- #
 
     /**
@@ -73,5 +88,16 @@ class MenuService
         return $res;
     }
 
+    /**
+     * Notes:删除菜单
+     * User: weicheng
+     * DateTime: 2021/8/24 16:49
+     * @param $id
+     * @return mixed
+     */
+    public static function delete($id)
+    {
+        return MenuCategory::where('id',$id)->delete();
+    }
     # ------------------------------- private function ------------------------------- #
 }

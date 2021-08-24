@@ -26,4 +26,10 @@ class MenuCategory extends BaseModel
         "url",
         "ext",
     ];
+    # 类型转换
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+        'deleted_at' => 'datetime:Y-m-d H:i:s',
+    ];
 }
