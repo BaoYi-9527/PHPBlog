@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-//Route::group(['middleware' => ['admin.auth']],function () {
-Route::group(['middleware' => []],function () {
+Route::group(['middleware' => ['admin.auth']],function () {
+//Route::group(['middleware' => []],function () {
     # 文章
     Route::prefix('article')->name('article.')->group(function () {
         # 编辑器-写作
