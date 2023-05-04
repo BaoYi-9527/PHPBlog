@@ -215,7 +215,6 @@
             let searchString = location.search
             if(searchString === '') searchString = '?id=1'
             $.get('/article/list' + searchString + '&page=' + nextPage, function (response) {
-                console.log(response)
                 if(response !== '') {
                     $('.article-list-container').append(response)
                 }

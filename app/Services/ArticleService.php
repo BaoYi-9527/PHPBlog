@@ -18,7 +18,7 @@ class ArticleService
      * @param array $conditions // 可选条件
      * @return mixed
      */
-    public function articleQuery($fields = [], $conditions = [])
+    public function articleQuery(array $fields = [], array $conditions = [])
     {
         $cateId = $conditions['cate_id'] ?? '';
         return Article::where('status',ArticleConstant::STATUS_PUBLISHED)
@@ -51,7 +51,7 @@ class ArticleService
      * @param string $id
      * @return bool
      */
-    public static function saveOrUpdate($params, $id = '')
+    public static function saveOrUpdate($params, string $id = ''): bool
     {
         if ($id) {
             $res = Article::where('id', $id)->update($params);
@@ -73,7 +73,7 @@ class ArticleService
      * @param $cacheKey
      * @return bool
      */
-    public static function viewsAdd($id,$cacheKey)
+    public static function viewsAdd($id,$cacheKey): bool
     {
         if(Cache::has($cacheKey)) {
             return false;
